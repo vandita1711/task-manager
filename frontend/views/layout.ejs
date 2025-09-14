@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .task-card {
+            border-left: 4px solid #007bff;
+            transition: transform 0.2s;
+        }
+        .task-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .status-pending { border-left-color: #ffc107; }
+        .status-in-progress { border-left-color: #17a2b8; }
+        .status-completed { border-left-color: #28a745; }
+        
+        .priority-high { background-color: #fff5f5; }
+        .priority-medium { background-color: #fffbf0; }
+        .priority-low { background-color: #f0fff4; }
+        
+        .navbar-brand {
+            font-weight: bold;
+        }
+        
+        .btn-group .btn {
+            margin-right: 5px;
+        }
+        
+        footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-tasks"></i> Task Manager
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a class="nav-link" href="/add-task">
+                    <i class="fas fa-plus"></i> Add Task
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <%- body %>
+    </main>
+
+    <footer class="text-center text-muted">
+        <div class="container">
+            <p>&copy; 2024 Task Manager. Built with Python Flask + Node.js + SQLite</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

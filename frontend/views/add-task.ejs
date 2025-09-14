@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task - Task Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-tasks"></i> Task Manager
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a class="nav-link active" href="/add-task">
+                    <i class="fas fa-plus"></i> Add Task
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">
+                            <i class="fas fa-plus-circle"></i> Add New Task
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/add-task">
+                            <div class="mb-3">
+                                <label for="user_id" class="form-label">
+                                    <i class="fas fa-user"></i> Assign to User *
+                                </label>
+                                <select class="form-select" id="user_id" name="user_id" required>
+                                    <option value="">Select a user...</option>
+                                    <% users.forEach(user => { %>
+                                        <option value="<%= user.id %>"><%= user.username %> (<%= user.email %>)</option>
+                                    <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="title" class="form-label">
+                                    <i class="fas fa-heading"></i> Task Title *
+                                </label>
+                                <input type="text" class="form-control" id="title" name="title" 
+                                       placeholder="Enter task title..." required maxlength="200">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="description" class="form-label">
+                                    <i class="fas fa-align-left"></i> Description
+                                </label>
+                                <textarea class="form-control" id="description" name="description" rows="4"
+                                          placeholder="Enter task description..."></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="priority" class="form-label">
+                                    <i class="fas fa-exclamation-circle"></i> Priority
+                                </label>
+                                <select class="form-select" id="priority" name="priority">
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="/" class="btn btn-secondary me-md-2">
+                                    <i class="fas fa-times"></i> Cancel
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Create Task
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center text-muted mt-5 py-4" style="background-color: #f8f9fa; border-top: 1px solid #dee2e6;">
+        <div class="container">
+            <p>&copy; 2024 Task Manager. Built with Python Flask + Node.js + SQLite</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task - Task Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-tasks"></i> Task Manager
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a class="nav-link" href="/add-task">
+                    <i class="fas fa-plus"></i> Add Task
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        <h4 class="mb-0">
+                            <i class="fas fa-edit"></i> Edit Task
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/edit-task/<%= task.id %>">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">
+                                    <i class="fas fa-heading"></i> Task Title *
+                                </label>
+                                <input type="text" class="form-control" id="title" name="title" 
+                                       value="<%= task.title %>" required maxlength="200">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="description" class="form-label">
+                                    <i class="fas fa-align-left"></i> Description
+                                </label>
+                                <textarea class="form-control" id="description" name="description" rows="4"><%= task.description || '' %></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="status" class="form-label">
+                                            <i class="fas fa-flag"></i> Status
+                                        </label>
+                                        <select class="form-select" id="status" name="status">
+                                            <option value="pending" <%= task.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                                            <option value="in-progress" <%= task.status === 'in-progress' ? 'selected' : '' %>>In Progress</option>
+                                            <option value="completed" <%= task.status === 'completed' ? 'selected' : '' %>>Completed</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="priority" class="form-label">
+                                            <i class="fas fa-exclamation-circle"></i> Priority
+                                        </label>
+                                        <select class="form-select" id="priority" name="priority">
+                                            <option value="low" <%= task.priority === 'low' ? 'selected' : '' %>>Low</option>
+                                            <option value="medium" <%= task.priority === 'medium' ? 'selected' : '' %>>Medium</option>
+                                            <option value="high" <%= task.priority === 'high' ? 'selected' : '' %>>High</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-info-circle"></i>
+                                    Created: <%= new Date(task.created_at).toLocaleString() %>
+                                    <% if (task.updated_at && task.updated_at !== task.created_at) { %>
+                                        | Last Updated: <%= new Date(task.updated_at).toLocaleString() %>
+                                    <% } %>
+                                </small>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="/" class="btn btn-secondary me-md-2">
+                                    <i class="fas fa-times"></i> Cancel
+                                </a>
+                                <button type="submit" class="btn btn-warning">
+                                    <i class="fas fa-save"></i> Update Task
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Task Details Card -->
+                <div class="card mt-3">
+                    <div class="card-header bg-light">
+                        <h6 class="mb-0"><i class="fas fa-info"></i> Task Information</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4"><strong>Task ID:</strong></div>
+                            <div class="col-sm-8">#<%= task.id %></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4"><strong>Assigned to:</strong></div>
+                            <div class="col-sm-8">User ID: <%= task.user_id %></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4"><strong>Current Status:</strong></div>
+                            <div class="col-sm-8">
+                                <span class="badge bg-<%= task.status === 'completed' ? 'success' : task.status === 'in-progress' ? 'info' : 'warning' %>">
+                                    <%= task.status.replace('-', ' ').toUpperCase() %>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4"><strong>Priority:</strong></div>
+                            <div class="col-sm-8">
+                                <span class="badge bg-<%= task.priority === 'high' ? 'danger' : task.priority === 'medium' ? 'warning' : 'success' %>">
+                                    <%= task.priority.toUpperCase() %>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center text-muted mt-5 py-4" style="background-color: #f8f9fa; border-top: 1px solid #dee2e6;">
+        <div class="container">
+            <p>&copy; 2024 Task Manager. Built with Python Flask + Node.js + SQLite</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
