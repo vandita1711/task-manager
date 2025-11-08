@@ -233,6 +233,19 @@ def get_task(task_id):
     
     return jsonify(dict(task))
 
+@app.route('/')
+def home():
+    return jsonify({
+        'message': '✅ Task Manager API is running successfully on Render!',
+        'available_endpoints': [
+            '/api/health',
+            '/api/users',
+            '/api/users/<user_id>/tasks',
+            '/api/tasks'
+        ]
+    })
+
+
 if __name__ == '__main__':
     # Initialize database
     init_database()
