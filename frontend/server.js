@@ -1,17 +1,15 @@
-const PORT = process.env.PORT || 3000;
-const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:5000/api';
-
-console.log(' Server Configuration:');
-console.log(' Port:', PORT);
-console.log(' API URL:', API_BASE_URL);
-console.log(' Environment:', process.env.NODE_ENV || 'development');
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
-const API_BASE_URL = 'http://localhost:5000/api';
+const PORT = process.env.PORT || 3000;
+const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:5000/api';
+
+console.log('🚀 Server Configuration:');
+console.log('📍 Port:', PORT);
+console.log('🔗 API URL:', API_BASE_URL);
+console.log('🌍 Environment:', process.env.NODE_ENV || 'development');
 
 // Middleware
 app.use(express.static('public'));
@@ -164,11 +162,7 @@ app.get('/api/users/:userId/tasks', async (req, res) => {
     }
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`Frontend server running on http://localhost:${PORT}`);
-    console.log('Make sure the Python API is running on http://localhost:5000');
-});
+// Start server (ONLY ONE app.listen!)
 app.listen(PORT, '0.0.0.0', () => {
     console.log('');
     console.log('✅ Frontend server running successfully!');
