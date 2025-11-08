@@ -2,6 +2,23 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import sqlite3
 import os
+
+# ... existing imports ...
+
+app = Flask(__name__)
+
+# Production CORS configuration
+if os.environ.get('FLASK_ENV') == 'production':
+    CORS(app, resources={
+        r"/api/*": {
+            "origins": [
+                "https://*.onrender.com",
+                "http://localhost:3000"
+            ]
+        }
+    })
+else:
+    CORS(app)  # Allow all in development
 from datetime import datetime
 
 app = Flask(__name__)
