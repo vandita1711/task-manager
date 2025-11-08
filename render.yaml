@@ -1,0 +1,31 @@
+services:
+  # Python Flask Backend API
+  - type: web
+    name: task-manager-api
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && gunicorn --bind 0.0.0.0:$PORT app:app
+    healthCheckPath: /api/health
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PYTHON_VERSION
+        value: 3.9.0
+  
+  # Node.js Express Frontend
+  - type: web
+    name: task-manager-frontend
+    env: node
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: cd frontend && npm install
+    startCommand: cd frontend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_BASE_URL
+        value: https://task-manager-api.onrender.com/api
