@@ -406,10 +406,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Vandita**
 
-- 🐙 GitHub: [@vandita17](https://github.com/vandita17)
-- 💼 LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- 📧 Email: your.email@example.com
-- 🌐 Portfolio: [Your Portfolio Website](https://yourportfolio.com)
+- 🐙 GitHub: vandita1711
+- 💼 LinkedIn: www.linkedin.com/in/vandita-gautam-209a192a0
+- 📧 Email: vanditagautam79@gmail.com
 
 ---
 
