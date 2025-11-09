@@ -27,25 +27,25 @@ A modern, full-stack task management application built with **Python Flask REST 
 ## ✨ Features
 
 ### 🎨 User Interface
-- ✅ **Modern Responsive Design** - Bootstrap 5 with mobile-first approach
-- ✅ **Real-time Dashboard** - Live task statistics and progress tracking
-- ✅ **Intuitive Navigation** - Clean, user-friendly interface
-- ✅ **Interactive Forms** - Dynamic task creation and editing
-- ✅ **Mobile Optimized** - Works seamlessly on all devices
+-  **Modern Responsive Design** - Bootstrap 5 with mobile-first approach
+-  **Real-time Dashboard** - Live task statistics and progress tracking
+-  **Intuitive Navigation** - Clean, user-friendly interface
+-  **Interactive Forms** - Dynamic task creation and editing
+-  **Mobile Optimized** - Works seamlessly on all devices
 
 ### 🔧 Backend API
-- ✅ **RESTful Architecture** - Complete CRUD operations
-- ✅ **Data Validation** - Server-side validation and error handling
-- ✅ **Database Relationships** - Proper foreign key constraints
-- ✅ **CORS Support** - Cross-origin resource sharing enabled
-- ✅ **Health Monitoring** - API health check endpoint
+-  **RESTful Architecture** - Complete CRUD operations
+-  **Data Validation** - Server-side validation and error handling
+-  **Database Relationships** - Proper foreign key constraints
+-  **CORS Support** - Cross-origin resource sharing enabled
+-  **Health Monitoring** - API health check endpoint
 
 ### 📊 Task Management
-- ✅ **Multi-user Support** - Assign tasks to different users
-- ✅ **Priority Levels** - High, Medium, Low priority classification
-- ✅ **Status Tracking** - Pending → In Progress → Completed workflow
-- ✅ **Advanced Filtering** - Filter by user, status, and priority
-- ✅ **Task Statistics** - Real-time dashboard with task counts
+-  **Multi-user Support** - Assign tasks to different users
+-  **Priority Levels** - High, Medium, Low priority classification
+-  **Status Tracking** - Pending → In Progress → Completed workflow
+-  **Advanced Filtering** - Filter by user, status, and priority
+-  **Task Statistics** - Real-time dashboard with task counts
 
 ---
 
@@ -198,32 +198,6 @@ curl -X PUT https://task-manager-api-1p72.onrender.com/api/tasks/1 \
   }'
 ```
 
----
-
-## 📦 Project Structure
-
-```
-task-manager/
-├── 📁 backend/                 # Python Flask API
-│   ├── 🐍 app.py              # Main Flask application
-│   ├── 📋 requirements.txt    # Python dependencies
-│   └── 🗄️ tasks.db           # SQLite database (auto-generated)
-│
-├── 📁 frontend/               # Node.js Express frontend
-│   ├── 🌐 server.js          # Express server
-│   ├── 📋 package.json       # Node.js dependencies
-│   └── 📁 views/             # EJS templates
-│       ├── 🏠 index.ejs      # Dashboard
-│       ├── ➕ add-task.ejs   # Create task form
-│       └── ✏️ edit-task.ejs   # Edit task form
-│
-├── 🔧 render.yaml            # Render deployment config
-├── 🚫 .gitignore             # Git ignore rules
-├── 📝 README.md              # This file
-└── 📄 LICENSE                # MIT License
-```
-
----
 
 ## 🗄️ Database Schema
 
